@@ -8,7 +8,9 @@
 
 ## インストール
 
-blogcard.inc.php を PukiWiki の plugin ディレクトリに配置してください。
+下記GitHubページからダウンロードした blogcard.inc.php を PukiWiki の plugin ディレクトリに配置してください。
+
+[https://github.com/ikamonster/pukiwiki-blogcard](https://github.com/ikamonster/pukiwiki-blogcard)
 
 ## 使い方
 
