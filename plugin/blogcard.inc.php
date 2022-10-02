@@ -1,7 +1,7 @@
 <?php
 /*
 PukiWiki - Yet another WikiWikiWeb clone.
-blogcard.inc.php, v1.02 2020 M.Taniguchi
+blogcard.inc.php, v1.0.3 2020 M.Taniguchi
 License: GPL v3 or (at your option) any later version
 
 ブログカードを表示するプラグイン。
@@ -47,7 +47,7 @@ function plugin_blogcard_convert() {
 		$width = PLUGIN_BLOGCARD_WIDTH;
 		$widgetTag .= <<<EOT
 <style>
-._p_blogcard,._p_blogcard>iframe{position:relative;max-width:${width}px;max-height:90px;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box}
+._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width}px;max-height:90px;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box}
 ._p_blogcard>iframe{border:none}
 </style>
 EOT;
@@ -245,7 +245,7 @@ function plugin_blogcard_action() {
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="${charset}"/>
+<meta charset="{$charset}"/>
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,viewport-fit=cover"/>
 <meta name="format-detection" content="telephone=no"/>
 <meta name="robots" content="noindex,nofollow,noarchive"/>
@@ -298,7 +298,7 @@ a > div {
 }
 
 .image {
-	background-image: url(${image});
+	background-image: url({$image});
 	background-size: cover;
 }
 
@@ -308,7 +308,7 @@ a > div {
 	width: 100%;
 	height: 75px;
 	max-width: 530px;
-	max-width: calc(100% - ${imageSize});
+	max-width: calc(100% - {$imageSize});
 	max-height: 75px;
 	padding-top: 7.5px
 }
@@ -340,17 +340,17 @@ a > div {
 	vertical-align: top;
 }
 
-${themeCss}
+{$themeCss}
 </style>
 </head>
 <body>
-<a href="${url}" rel="noopener external" target="${target}">
+<a href="{$url}" rel="noopener external" target="{$target}">
 <div class="text">
-<div class="title ${titleClass}">${title}</div>
-${desc}
-<div class="url wb">${siteName}</div>
+<div class="title {$titleClass}">{$title}</div>
+{$desc}
+<div class="url wb">{$siteName}</div>
 </div>
-${imageTag}
+{$imageTag}
 </a>
 </body>
 </head>
