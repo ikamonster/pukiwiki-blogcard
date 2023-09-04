@@ -4,7 +4,7 @@
 
 |対象PukiWikiバージョン|対象PHPバージョン|
 |:---:|:---:|
-|PukiWiki 1.5.3 ~ 1.5.4RC (UTF-8)|PHP 7.4 ~ 8.2|
+|PukiWiki 1.5.3 ~ 1.5.4 (UTF-8)|PHP 7.4 ~ 8.2|
 
 ## インストール
 
@@ -40,7 +40,7 @@ url … リンク先ページのURL
 |:---|:---:|:---|:---|
 |PLUGIN_BLOGCARD_NEWTAB|0 or 1|1|1ならURLを新規タブで開く|
 |PLUGIN_BLOGCARD_THEME|0 ~ 2|0|カラーテーマ（0:ライト, 1:ダーク, 2:OS設定に自動適応）|
-|PLUGIN_BLOGCARD_WIDTH|数値|800|最大表示幅（px）|
+|PLUGIN_BLOGCARD_WIDTH|数値|50em|最大表示幅（単位付き）|
 |PLUGIN_BLOGCARD_CACHE_AGE|数値|604800|情報キャッシュの有効期限（秒）|
-|PLUGIN_BLOGCARD_USERAGENT|文字列|'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.0 (KHTML, like Gecko) Chrome/97.0.0.0 Safari/537.0'|リンク先アクセス時の UserAgent|
+|PLUGIN_BLOGCARD_USERAGENT|文字列|'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.0 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.0'|リンク先アクセス時の UserAgent|
 
