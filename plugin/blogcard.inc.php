@@ -1,7 +1,7 @@
 <?php
 /*
 PukiWiki - Yet another WikiWikiWeb clone.
-blogcard.inc.php, v1.0.4 2020 M.Taniguchi
+blogcard.inc.php, v1.0.5 2020 M.Taniguchi
 License: GPL v3 or (at your option) any later version
 
 ブログカードを表示するプラグイン。
@@ -45,7 +45,7 @@ function plugin_blogcard_convert() {
 	static	$included = false;
 	if (!$included) {
 		$width = PLUGIN_BLOGCARD_WIDTH;
-		$widgetTag .= "<style>._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width};max-height:5.625rem;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box} ._p_blogcard>iframe{border:none}</style>";
+		$widgetTag .= "<style>._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width};max-height:5.625rem;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box;border-radius:.5rem;border:1px solid rgba(128,128,128,.5);box-shadow:4px 4px 4px rgba(128,128,128,.1)} ._p_blogcard>iframe{border:none}</style>";
 		$included = true;
 	}
 
@@ -224,10 +224,10 @@ function plugin_blogcard_action() {
 
 		switch (PLUGIN_BLOGCARD_THEME) {
 		case 1:
-			$themeCss = 'a{color:#ddd;color:var(--dcolor,#ddd)';
+			$themeCss = 'a{color:#ddd;color:var(--dcolor,#ddd);background:#111';
 			break;
 		case 2:
-			$themeCss = '@media screen and (prefers-color-scheme: dark){a{color:#ddd;color:var(--dcolor,#ddd);.image{filter: brightness(90%)}}';
+			$themeCss = '@media screen and (prefers-color-scheme: dark){a{color:#ddd;color:var(--dcolor,#ddd);background:#111};.image{filter: brightness(90%)}';
 			break;
 		default:
 			$themeCss = '';
@@ -254,8 +254,7 @@ a {
 	padding: 0 0 0 .5rem;
 	margin: 0;
 	box-sizing: border-box;
-	border: 1px solid rgba(128,128,128,.25);
-	border-radius: .375rem;
+	border: 0 none;
 	overflow: hidden;
 	background: transparent;
 	font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif;
