@@ -1,7 +1,7 @@
 <?php
 /*
 PukiWiki - Yet another WikiWikiWeb clone.
-blogcard.inc.php, v1.0.3 2020 M.Taniguchi
+blogcard.inc.php, v1.0.4 2020 M.Taniguchi
 License: GPL v3 or (at your option) any later version
 
 ブログカードを表示するプラグイン。
@@ -45,12 +45,7 @@ function plugin_blogcard_convert() {
 	static	$included = false;
 	if (!$included) {
 		$width = PLUGIN_BLOGCARD_WIDTH;
-		$widgetTag .= <<<EOT
-<style>
-._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width}px;max-height:90px;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box}
-._p_blogcard>iframe{border:none}
-</style>
-EOT;
+		$widgetTag .= '<style>._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width}px;max-height:90px;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box} ._p_blogcard>iframe{border:none}</style>';
 		$included = true;
 	}
 
