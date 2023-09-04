@@ -25,11 +25,11 @@ url … リンク先ページのURL
 
 /////////////////////////////////////////////////
 // ブログカードプラグイン（blogcard.inc.php）
-if (!defined('PLUGIN_BLOGCARD_NEWTAB'))    define('PLUGIN_BLOGCARD_NEWTAB',     1);      // 1ならURLを新規タブで開く（0 or 1）
-if (!defined('PLUGIN_BLOGCARD_THEME'))     define('PLUGIN_BLOGCARD_THEME',      0);      // カラーテーマ（0:ライト, 1:ダーク, 2:OS設定に自動適応）
-if (!defined('PLUGIN_BLOGCARD_WIDTH'))     define('PLUGIN_BLOGCARD_WIDTH',      800);    // 最大表示幅（px）
-if (!defined('PLUGIN_BLOGCARD_CACHE_AGE')) define('PLUGIN_BLOGCARD_CACHE_AGE',  604800); // 情報キャッシュの有効期限（秒）
-if (!defined('PLUGIN_BLOGCARD_USERAGENT')) define('PLUGIN_BLOGCARD_USERAGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.0 (KHTML, like Gecko) Chrome/97.0.0.0 Safari/537.0'); // 対象サイトアクセス時のUserAgent
+if (!defined('PLUGIN_BLOGCARD_NEWTAB'))    define('PLUGIN_BLOGCARD_NEWTAB',     1);       // 1ならURLを新規タブで開く（0 or 1）
+if (!defined('PLUGIN_BLOGCARD_THEME'))     define('PLUGIN_BLOGCARD_THEME',      0);       // カラーテーマ（0:ライト, 1:ダーク, 2:OS設定に自動適応）
+if (!defined('PLUGIN_BLOGCARD_WIDTH'))     define('PLUGIN_BLOGCARD_WIDTH',      '50em'); // 最大表示幅（単位付き）
+if (!defined('PLUGIN_BLOGCARD_CACHE_AGE')) define('PLUGIN_BLOGCARD_CACHE_AGE',  604800);  // 情報キャッシュの有効期限（秒）
+if (!defined('PLUGIN_BLOGCARD_USERAGENT')) define('PLUGIN_BLOGCARD_USERAGENT', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.0 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.0'); // 対象サイトアクセス時のUserAgent
 
 
 // ブロック呼び出し：ブログカード出力
@@ -39,13 +39,13 @@ function plugin_blogcard_convert() {
 
 	if ($url) {
 		$url = urlencode($url);
-		$widgetTag = '<div class="_p_blogcard" ><iframe src="./?plugin=blogcard&refer=' . $url . '" width="' . PLUGIN_BLOGCARD_WIDTH . '" height="90px" loading="lazy"></iframe></div>';
+		$widgetTag = '<div class="_p_blogcard" ><iframe src="./?plugin=blogcard&refer=' . $url . '" width="' . PLUGIN_BLOGCARD_WIDTH . '" height="5em" loading="lazy"></iframe></div>';
 	}
 
 	static	$included = false;
 	if (!$included) {
 		$width = PLUGIN_BLOGCARD_WIDTH;
-		$widgetTag .= '<style>._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width}px;max-height:90px;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box} ._p_blogcard>iframe{border:none}</style>';
+		$widgetTag .= "<style>._p_blogcard,._p_blogcard>iframe{position:relative;max-width:{$width};max-height:5.625rem;width:100%;height:100%;min-width:0;min-height:0;padding:0;overflow:hidden;box-sizing:border-box} ._p_blogcard>iframe{border:none}</style>";
 		$included = true;
 	}
 
@@ -211,12 +211,12 @@ function plugin_blogcard_action() {
 		if (isset($data->_p_blogcard_image)) {
 			$image = $data->_p_blogcard_image;
 			$imageTag = '<div class="image"></div>';
-			$imageSize = '90px';
+			$imageSize = '5.625rem';
 		} else
 		if (isset($data->image)) {
 			$image = filter_var($data->image, FILTER_SANITIZE_URL);
 			$imageTag = '<div class="image"></div>';
-			$imageSize = '90px';
+			$imageSize = '5.625rem';
 		} else {
 			$image = $imageTag = '';
 			$imageSize = 0;
@@ -251,15 +251,15 @@ a {
 	display: block;
 	width: 100%;
 	height: 100%;
-	padding: 0 0 0 8px;
+	padding: 0 0 0 .5rem;
 	margin: 0;
 	box-sizing: border-box;
 	border: 1px solid rgba(128,128,128,.25);
-	border-radius: 6px;
+	border-radius: .375rem;
 	overflow: hidden;
 	background: transparent;
 	font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,Segoe UI,Hiragino Kaku Gothic ProN,Hiragino Sans,Meiryo,sans-serif;
-	font-size: 12px;
+	font-size: .75rem;
 	line-height: 1em;
 	vertical-align: middle;
 	color: #222;
@@ -276,12 +276,12 @@ a > div {
 	display: inline-block;
 	float: left;
 
-	min-width: 90px;
-	min-height: 90px;
-	width: 90px;
-	height: 90px;
-	max-width: 90px;
-	max-height: 90px;
+	min-width: 5.625rem;
+	min-height: 5.625rem;
+	width: 5.625rem;
+	height: 5.625rem;
+	max-width: 5.625rem;
+	max-height: 5.625rem;
 }
 
 .wb {
@@ -299,34 +299,34 @@ a > div {
 
 .text {
 	min-width: 0;
-	min-height: 90px;
+	min-height: 5.625rem;
 	width: 100%;
-	height: 75px;
-	max-width: 530px;
+	height: 4.6875rem;
+	max-width: 35rem;
 	max-width: calc(100% - {$imageSize});
-	max-height: 75px;
-	padding-top: 7.5px
+	max-height: 4.6875rem;
+	padding-top: .5rem;
 }
 
 .text > div {
 	min-width: 0;
 	width: 100%;
 	overflow: hidden;
-	padding: 0 4px 0 0;
+	padding: 0 .25rem 0 0;
 	margin: 0;
 	box-sizing: border-box;
 	min-height: 0;
 	height: 100%;
-	max-height: 25px;
-	line-height: 25px;
+	max-height: 1.5rem;
+	line-height: 1.5rem;
 }
 
 .title {
-	font-size: 16px;
+	font-size: 1rem;
 	font-weight: bold;
 	vertical-align: bottom;
 }
-.text > div.titleTwo { max-height: 50px; }
+.text > div.titleTwo { max-height: 3.125rem; }
 .desc {
 	vertical-align: middle;
 	opacity: .666;
